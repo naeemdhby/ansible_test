@@ -3,7 +3,7 @@
 
   tasks:
   - name: Create database server record
-    community.windows.win_dns_record:
+    win_dns_record:
       name: "db.mobiz.local"
       type: "A"
       value: "10.1.1.1"
