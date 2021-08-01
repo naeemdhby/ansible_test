@@ -1,0 +1,10 @@
+- name: add record
+  hosts: all 
+
+  tasks:
+  - name: Create database server record
+    win_dns_record:
+      name: "db.mobiz.local"
+      type: "A"
+      value: "10.1.1.1"
+      zone: "mobiz.local"
