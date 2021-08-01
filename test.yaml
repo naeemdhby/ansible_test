@@ -18,4 +18,4 @@
       type: "A"
       value: "{{hostvars[item].ansible_host}}"
       zone: "mobiz.local"
-      
+    loop: "{{ groups['routers'] }}"
