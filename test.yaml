@@ -2,9 +2,20 @@
   hosts: all 
 
   tasks:
-  - name: Create database server record
+  - name: Create switches records
     win_dns_record:
-      name: "db"
+      name: "{{item}}"
       type: "A"
-      value: "10.1.1.1"
+      value: "{{hostvars[item].ansible_host}}"
       zone: "mobiz.local"
+    loop: "{{ groups['switches'] }}"
+
+
+
+  - name: Create routers records
+    win_dns_record:
+      name: "{{item}}"
+      type: "A"
+      value: "{{hostvars[item].ansible_host}}"
+      zone: "mobiz.local"
+      
