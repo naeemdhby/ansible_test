@@ -4,18 +4,8 @@
   tasks:
   - name: Create switches records
     win_dns_record:
-      name: "{{item}}"
+      name: "{{hostvars[item].sn_name}}"
       type: "A"
-      value: "{{hostvars[item].ansible_host}}"
+      value: "{{hostvars[item].sn_ip_address}}"
       zone: "mobiz.local"
     loop: "{{ groups['switches'] }}"
-
-
-
-  - name: Create routers records
-    win_dns_record:
-      name: "{{item}}"
-      type: "A"
-      value: "{{hostvars[item].ansible_host}}"
-      zone: "mobiz.local"
-    loop: "{{ groups['routers'] }}"
