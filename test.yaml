@@ -34,4 +34,4 @@
       type: "PTR"
       value: "{{item}}"
       zone: "0.10.10.in-addr.arpa"
-    loop: "{{ groups['routers'] }}"
+    loop: "{{ groups['switches'] }}"
