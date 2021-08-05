@@ -22,7 +22,7 @@
 
   - name: Create PTR record for routers
     win_dns_record:
-      name: "{{hostvars[item].ansible_host.split('.')[0:3] | join('.')}}"
+      name: "{{hostvars[item].ansible_host.split('.')[0:1] | join('.')}}"
       type: "PTR"
       value: "{{item}}"
       zone: "0.10.10.in-addr.arpa"
@@ -30,7 +30,7 @@
 
   - name: Create PTR record for switches
     win_dns_record:
-      name: "{{hostvars[item].ansible_host.split('.')[0:3] | join('.')}}"
+      name: "{{hostvars[item].ansible_host.split('.')[0:1] | join('.')}}"
       type: "PTR"
       value: "{{item}}"
       zone: "0.10.10.in-addr.arpa"
