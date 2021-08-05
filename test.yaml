@@ -11,11 +11,27 @@
     loop: "{{ groups['switches'] }}"
 
 
-
   - name: Create routers records
     win_dns_record:
       name: "{{item}}"
       type: "A"
       value: "{{hostvars[item].ansible_host}}"
       zone: "mobiz.local"
+    loop: "{{ groups['routers'] }}"
+
+
+  - name: Create PTR record for routers
+    win_dns_record:
+      name: "{{hostvars[item].ansible_host}}"
+      type: "A"
+      value: "{{item}}"
+      zone: "0.10.10.in-addr.arpa"
+    loop: "{{ groups['routers'] }}"
+
+  - name: Create PTR record for switches
+    win_dns_record:
+      name: "{{hostvars[item].ansible_host}}"
+      type: "A"
+      value: "{{item}}"
+      zone: "0.10.10.in-addr.arpa"
     loop: "{{ groups['routers'] }}"
