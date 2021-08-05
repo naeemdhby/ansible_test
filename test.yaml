@@ -13,7 +13,7 @@
 
   - name: Create PTR record for switches
     win_dns_record:
-      name: "{{{hostvars[item].sn_ip_address.split('.')[3] | join('.')}}"
+      name: "{{hostvars[item].sn_ip_address.split('.')[3] | join('.')}}"
       type: "PTR"
       value: "{{hostvars[item].sn_name}}"
       zone: "0.10.10.in-addr.arpa"
