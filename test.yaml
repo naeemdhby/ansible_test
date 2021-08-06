@@ -15,6 +15,6 @@
     win_dns_record:
       name: "{{hostvars[item].sn_ip_address.split('.')[3] | join('.')}}"
       type: "PTR"
-      value: "{{hostvars[item].sn_name}}"
+      value: "{{hostvars[item].sn_name}}.mobiz.local"
       zone: "0.10.10.in-addr.arpa"
     loop: "{{ groups['switches'] }}"
