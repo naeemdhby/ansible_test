@@ -24,7 +24,7 @@
     win_dns_record:
       name: "{{hostvars[item].ansible_host.split('.')[3] | join('.')}}"
       type: "PTR"
-      value: "{{item}}"
+      value: "{{item}}.mobiz.com"
       zone: "0.10.10.in-addr.arpa"
     loop: "{{ groups['routers'] }}"
 
@@ -32,6 +32,6 @@
     win_dns_record:
       name: "{{hostvars[item].ansible_host.split('.')[3] | join('.')}}"
       type: "PTR"
-      value: "{{item}}"
+      value: "{{item}}.mobiz.com"
       zone: "0.10.10.in-addr.arpa"
     loop: "{{ groups['switches'] }}"
